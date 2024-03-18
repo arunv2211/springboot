@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 
+import java.sql.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -23,7 +24,7 @@ public class User {
 	@Column(name="user_id", length = 30)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer userId;
-	@Column(name="user_name", length = 100)
+	@Column(name="username", length = 100)
 	private String userName;
 	@Column(name="password", length = 100)
 	private String password;
@@ -32,7 +33,7 @@ public class User {
 	@Column(name="gender", length = 100)
 	private String gender;
 	@Column(name="date_of_birth", length = 100)
-	private Integer dateOfBirth;
+	private Date dateOfBirth;
 	@Column(name="phone_no", length = 100)
 	private Integer phoneNo;
 	@Column(name="aternate_no", length = 100)
@@ -45,7 +46,7 @@ public class User {
 //	private Address address;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="address_id")
+	@JoinColumn(name="user_user_id")
 	private List<Address> addressList;
 	
 
@@ -53,7 +54,7 @@ public class User {
 	
 	}
 
-	public User(Integer userId, String userName, String password, Integer age, String gender, Integer dateOfBirth,
+	public User(Integer userId, String userName, String password, Integer age, String gender, Date dateOfBirth,
 			Integer phoneNo, Integer alternateNo, List<Address> addressList) {
 		this.userId = userId;
 		this.userName = userName;
@@ -150,7 +151,7 @@ public class User {
 
 
 
-	public Integer getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
@@ -158,7 +159,7 @@ public class User {
 
 
 
-	public void setDateOfBirth(Integer dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -210,16 +211,18 @@ public class User {
 		this.addressList = addressList;
 	}
 
-
-
-
-
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", age=" + age
-				+ ", gender=" + gender + ", dateOfNirth=" + dateOfBirth + ", phoneNo=" + phoneNo + ", alternateNo="
+				+ ", gender=" + gender + ", dateOfBirth=" + dateOfBirth + ", phoneNo=" + phoneNo + ", alternateNo="
 				+ alternateNo + ", addressList=" + addressList + "]";
 	}
+
+
+
+
+
+	
 
 	
 //

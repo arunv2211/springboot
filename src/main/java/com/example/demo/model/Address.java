@@ -16,54 +16,113 @@ public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="address_id", length = 30)
-	private Integer address_id;
+	private Integer addressId;
 	
-	@Column(name="permanent_address", length = 200)
-	private String permanent_address;
-	@Column(name="current_address", length = 200)
-	private String current_address;
+	@Column(name="address_type", length = 200)
+	private Integer addressType;
+	@Column(name="country", length = 200)
+	private String country;
+	@Column(name="state", length = 100)
+	private String state;
+	@Column(name="city", length = 100)
+	private String city;
+	@Column(name="zip_code", length = 100)
+	private String zipCode;
 	
 	public Address() {
 		
 	}
 
-	public Address(Integer address_id, String permanent_address, String current_address) {
+	
+	
+
+	public Address(Integer addressId, Integer addressType, String country, String state, String city, String zipCode) {
 		super();
-		this.address_id = address_id;
-		this.permanent_address = permanent_address;
-		this.current_address = current_address;
+		this.addressId = addressId;
+		this.addressType = addressType;
+		this.country = country;
+		this.state = state;
+		this.city = city;
+		this.zipCode = zipCode;
 	}
 
-	public Integer getAddress_id() {
-		return address_id;
+
+
+
+	public Integer getAddressId() {
+		return addressId;
 	}
 
-	public void setAddress_id(Integer address_id) {
-		this.address_id = address_id;
+
+
+
+	public void setAddressId(Integer addressId) {
+		this.addressId = addressId;
 	}
 
-	public String getPermanent_address() {
-		return permanent_address;
+
+
+
+	public Integer getAddressType() {
+		return addressType;
 	}
 
-	public void setPermanent_address(String permanent_address) {
-		this.permanent_address = permanent_address;
+
+	public void setAddressType(Integer addressType) {
+		this.addressType = addressType;
 	}
 
-	public String getCurrent_address() {
-		return current_address;
+
+	public String getCountry() {
+		return country;
 	}
 
-	public void setCurrent_address(String current_address) {
-		this.current_address = current_address;
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
+
+
+	public String getState() {
+		return state;
+	}
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+
+
 
 	@Override
 	public String toString() {
-		return "Address [address_id=" + address_id + ", permanent_address=" + permanent_address + ", current_address="
-				+ current_address + "]";
+		return "Address [addressId=" + addressId + ", addressType=" + addressType + ", country=" + country + ", state="
+				+ state + ", city=" + city + ", zipCode=" + zipCode + "]";
 	}
+
+
+	
 
 	
 	

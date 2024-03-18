@@ -1,5 +1,6 @@
 package com.example.demo.controller.dto;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.example.demo.model.Address;
@@ -10,7 +11,7 @@ public class UserDto {
 	private String password;
 	private Integer age;
 	private String gender;
-	private Integer dateOfBirth;
+	private Date dateOfBirth;
 	private Integer phoneNo;
 	private Integer aternateNo;
 	private List<Address> address;
@@ -25,7 +26,7 @@ public class UserDto {
 	
 
 
-	public UserDto(Integer userId, String userName, String password, Integer age, String gender, Integer dateOfBirth,
+	public UserDto(Integer userId, String userName, String password, Integer age, String gender, Date dateOfBirth,
 			Integer phoneNo, Integer aternateNo, List<Address> address) {
 		super();
 		this.userId = userId;
@@ -134,7 +135,7 @@ public class UserDto {
 
 
 
-	public Integer getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
@@ -143,7 +144,7 @@ public class UserDto {
 
 
 
-	public void setDateOfBirth(Integer dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -212,6 +213,10 @@ public class UserDto {
 				+ ", gender=" + gender + ", dateOfBirth=" + dateOfBirth + ", phoneNo=" + phoneNo + ", aternateNo="
 				+ aternateNo + ", address=" + address + "]";
 	}
+
+
+
+
 
 	
 }

@@ -3,6 +3,8 @@ import java.util.List;
 
 import com.example.demo.controller.Response.MainResponseData;
 import com.example.demo.controller.Response.dataResponse;
+import com.example.demo.controller.dto.AddressDto;
+import com.example.demo.controller.dto.PatientMedicationDto;
 //import com.example.demo.controller.Response.MainResponseData;
 //import com.example.demo.controller.Response.dataResponse;
 import com.example.demo.controller.dto.UserDto;
@@ -13,6 +15,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.User;
+import com.example.demo.model.patientMedication;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -71,10 +74,32 @@ public class UserServiceImpl implements UserService{
 	public String putUser(UserDto userDto) {
 		Optional<User> optionalUser = userRepository.findById(userDto.getUserId());
 		User userObject = optionalUser.get();
+		userObject.setUserId(userDto.getUserId());
 		userObject.setUserName(userDto.getUserName());
+		userObject.setPassword(userDto.getPassword());
 		userObject.setAge(userDto.getAge());
 		userObject.setGender(userDto.getGender());
+		userObject.setDateOfBirth(userDto.getDateOfBirth());
+		userObject.setPhoneNo(userDto.getPhoneNo());
+		userObject.setAlternateNo(userDto.getAternateNo());
+		userObject.setAddressList(userDto.getAddress());
 		return "Success";
+	}
+	
+
+	@Transactional
+	@Override
+	public String postmedication(PatientMedicationDto patientMedicationto) {
+		patientMedication patientMedicine = new patientMedication();
+		
+		return "success";
+	}
+//	
+	@Transactional
+	@Override
+	public User getUserName(String userName) {
+		User userData = userRepository.findByUserName(userName);
+		return userData;
 	}
 }
 

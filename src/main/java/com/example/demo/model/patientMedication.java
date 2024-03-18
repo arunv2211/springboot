@@ -12,53 +12,53 @@ import jakarta.persistence.Table;
 public class patientMedication {
 	@Id
 	@Column(name="user_id", length = 100)
-	private Integer user_id;
+	private Integer userId;
 	
 	@Column(name="medicine_name", length = 200)
-	private String medicine_name;
+	private String medicineName;
 	
 	@Column(name="dosage", length = 200)
 	private Integer dosage;
 	
 
 	@Column(name="start_date", length = 200)
-	private String start_date;
+	private String startDate;
 	
 	@Column(name="end_date", length = 200)
-	private Integer end_date;
+	private Integer endDate;
 	
 	@Column(name="time_id", length = 100)
-	private Integer time_id;
+	private Integer timeId;
 
 	public patientMedication() {
 
 	}
 
-	public patientMedication(Integer user_id, String medicine_name, Integer dosage, String start_date, Integer end_date,
-			Integer time_id) {
+	public patientMedication(Integer userId, String medicineName, Integer dosage, String startDate, Integer endDate,
+			Integer timeId) {
 		super();
-		this.user_id = user_id;
-		this.medicine_name = medicine_name;
+		this.userId = userId;
+		this.medicineName = medicineName;
 		this.dosage = dosage;
-		this.start_date = start_date;
-		this.end_date = end_date;
-		this.time_id = time_id;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.timeId = timeId;
 	}
 
-	public Integer getUser_id() {
-		return user_id;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	public String getMedicine_name() {
-		return medicine_name;
+	public String getMedicineName() {
+		return medicineName;
 	}
 
-	public void setMedicine_name(String medicine_name) {
-		this.medicine_name = medicine_name;
+	public void setMedicineName(String medicineName) {
+		this.medicineName = medicineName;
 	}
 
 	public Integer getDosage() {
@@ -69,38 +69,35 @@ public class patientMedication {
 		this.dosage = dosage;
 	}
 
-	public String getStart_date() {
-		return start_date;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setStart_date(String start_date) {
-		this.start_date = start_date;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
-	public Integer getEnd_date() {
-		return end_date;
+	public Integer getEndDate() {
+		return endDate;
 	}
 
-	public void setEnd_date(Integer end_date) {
-		this.end_date = end_date;
+	public void setEndDate(Integer endDate) {
+		this.endDate = endDate;
 	}
 
-	public Integer getTime_id() {
-		return time_id;
+	public Integer getTimeId() {
+		return timeId;
 	}
 
-	public void setTime_id(Integer time_id) {
-		this.time_id = time_id;
+	public void setTimeId(Integer timeId) {
+		this.timeId = timeId;
 	}
 
 	@Override
 	public String toString() {
-		return "patientMedication [user_id=" + user_id + ", medicine_name=" + medicine_name + ", dosage=" + dosage
-				+ ", start_date=" + start_date + ", end_date=" + end_date + ", time_id=" + time_id + "]";
+		return "patientMedication [userId=" + userId + ", medicineName=" + medicineName + ", dosage=" + dosage
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", timeId=" + timeId + "]";
 	}
-	
-	
-	
 	
 
 
