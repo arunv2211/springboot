@@ -97,9 +97,16 @@ public class UserServiceImpl implements UserService{
 //	
 	@Transactional
 	@Override
-	public User getUserName(String userName) {
-		User userData = userRepository.findByUserName(userName);
+	public User getUserName(String userName,String password) {
+		User userData = userRepository.findByUserName(userName,password);
 		return userData;
+	}
+
+	@Override
+	public User getUserById(Integer userid) {
+		Optional<User> user =userRepository.findById(userid);
+		User userObj =user.get();
+		return userObj;
 	}
 }
 

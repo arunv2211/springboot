@@ -33,10 +33,17 @@ public class accessingMySql {
 	public @ResponseBody MainResponseData getAllUsers(){
 		return userService.getUser();
 	}
-	@GetMapping("/getuser/{username}")
-	public @ResponseBody User getUser(@PathVariable("username") String username){
-		return userService.getUserName(username);
+	
+	@GetMapping("/getuser/{username}/{password}")
+	public @ResponseBody User getUser(@PathVariable("username") String username,@PathVariable("password") String password){
+		return userService.getUserName(username,password);
 	}
+	
+	@GetMapping("/getuserbyid/{userid}")
+	public @ResponseBody User getUserById(@PathVariable("userid") Integer userid){
+		return userService.getUserById(userid);
+	}
+	
 	
 	
 	@PostMapping("/create")

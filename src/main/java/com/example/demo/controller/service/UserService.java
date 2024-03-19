@@ -13,8 +13,8 @@ public interface UserService {
 	public String postUser(UserDto userDto);
 	public String putUser(UserDto userDto);
 	public String deleteUser(Integer id);
-	public User getUserName(String userName);
-	
+	public User getUserName(String userName,String password);
+	public User getUserById(Integer id);
 	
 
 }
