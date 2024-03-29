@@ -1,94 +1,99 @@
 package com.example.demo.controller.dto;
 
+import java.sql.Date;
+import java.util.List;
+
+import com.example.demo.model.PatientMedicationDosage;
 
 public class PatientMedicationDto {
-	private Integer userId;
-	private String medicineName;
-	private Integer dosage;
-	private Integer startDate;
-	private Integer endDate;
-	private Integer timeId;
+	
+	private Integer medicationId;
+	private Integer treatmentId;
+	private String medicine;
+	private String dosage;
+	private Date createdAt;
+	private Date updatedAt;
+	private List<PatientMedicationDosageDto> timeList;
+	
 	public PatientMedicationDto() {
 	
 	}
-	
-	
-	public PatientMedicationDto(Integer userId, String medicineName, Integer dosage, Integer startDate, Integer endDate,
-			Integer timeId) {
+
+	public PatientMedicationDto(Integer medicationId, Integer treatmentId, String medicine, String dosage,
+			Date createdAt, Date updatedAt, List<PatientMedicationDosageDto> timeList) {
 		super();
-		this.userId = userId;
-		this.medicineName = medicineName;
+		this.medicationId = medicationId;
+		this.treatmentId = treatmentId;
+		this.medicine = medicine;
 		this.dosage = dosage;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.timeId = timeId;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.timeList = timeList;
 	}
 
-
-	public Integer getUserId() {
-		return userId;
+	public Integer getMedicationId() {
+		return medicationId;
 	}
 
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setMedicationId(Integer medicationId) {
+		this.medicationId = medicationId;
 	}
 
-
-	public String getMedicineName() {
-		return medicineName;
+	public Integer getTreatmentId() {
+		return treatmentId;
 	}
 
-
-	public void setMedicineName(String medicineName) {
-		this.medicineName = medicineName;
+	public void setTreatmentId(Integer treatmentId) {
+		this.treatmentId = treatmentId;
 	}
 
+	public String getMedicine() {
+		return medicine;
+	}
 
-	public Integer getDosage() {
+	public void setMedicine(String medicine) {
+		this.medicine = medicine;
+	}
+
+	public String getDosage() {
 		return dosage;
 	}
 
-
-	public void setDosage(Integer dosage) {
+	public void setDosage(String dosage) {
 		this.dosage = dosage;
 	}
 
-
-	public Integer getStartDate() {
-		return startDate;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-
-	public void setStartDate(Integer startDate) {
-		this.startDate = startDate;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
-
-	public Integer getEndDate() {
-		return endDate;
+	public Date getUpdatedAt() {
+		return updatedAt;
 	}
 
-
-	public void setEndDate(Integer endDate) {
-		this.endDate = endDate;
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
-
-	public Integer getTimeId() {
-		return timeId;
+	public List<PatientMedicationDosageDto> getTimeList() {
+		return timeList;
 	}
 
-
-	public void setTimeId(Integer timeId) {
-		this.timeId = timeId;
+	public void setTimeList(List<PatientMedicationDosageDto> timeList) {
+		this.timeList = timeList;
 	}
-
 
 	@Override
 	public String toString() {
-		return "PatientMedicationDto [userId=" + userId + ", medicineName=" + medicineName + ", dosage=" + dosage
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", timeId=" + timeId + "]";
+		return "PatientMedicationDto [medicationId=" + medicationId + ", treatmentId=" + treatmentId + ", medicine="
+				+ medicine + ", dosage=" + dosage + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ ", timeList=" + timeList + "]";
 	}
 
+	
+	
 }

@@ -34,10 +34,10 @@ public class User {
 	private String gender;
 	@Column(name="date_of_birth", length = 100)
 	private Date dateOfBirth;
-	@Column(name="phone_no", length = 100)
-	private Integer phoneNo;
-	@Column(name="aternate_no", length = 100)
-	private Integer alternateNo;
+	@Column(name="phone_no")
+	private Long phoneNo;
+	@Column(name="aternate_no")
+	private Long alternateNo;
 //	@Column(name="address_id", length = 100)
 //	private Integer addressId;
 //	
@@ -49,13 +49,20 @@ public class User {
 	@JoinColumn(name="user_user_id")
 	private List<Address> addressList;
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="user_id_fk")
+	private List<Treatment> treatmentList;
+	
 
 	public User() {
 	
 	}
 
+	
+
 	public User(Integer userId, String userName, String password, Integer age, String gender, Date dateOfBirth,
-			Integer phoneNo, Integer alternateNo, List<Address> addressList) {
+			Long phoneNo, Long alternateNo, List<Address> addressList, List<Treatment> treatmentList) {
+		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
@@ -65,9 +72,8 @@ public class User {
 		this.phoneNo = phoneNo;
 		this.alternateNo = alternateNo;
 		this.addressList = addressList;
+		this.treatmentList = treatmentList;
 	}
-
-
 
 
 
@@ -167,7 +173,7 @@ public class User {
 
 
 
-	public Integer getPhoneNo() {
+	public Long getPhoneNo() {
 		return phoneNo;
 	}
 
@@ -175,7 +181,7 @@ public class User {
 
 
 
-	public void setPhoneNo(Integer phoneNo) {
+	public void setPhoneNo(Long phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 
@@ -183,7 +189,7 @@ public class User {
 
 
 
-	public Integer getAlternateNo() {
+	public Long getAlternateNo() {
 		return alternateNo;
 	}
 
@@ -191,7 +197,7 @@ public class User {
 
 
 
-	public void setAlternateNo(Integer alternateNo) {
+	public void setAlternateNo(Long alternateNo) {
 		this.alternateNo = alternateNo;
 	}
 
@@ -211,21 +217,24 @@ public class User {
 		this.addressList = addressList;
 	}
 
+	public List<Treatment> getTreatmentList() {
+		return treatmentList;
+	}
+
+	public void setTreatmentList(List<Treatment> treatmentList) {
+		this.treatmentList = treatmentList;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", age=" + age
 				+ ", gender=" + gender + ", dateOfBirth=" + dateOfBirth + ", phoneNo=" + phoneNo + ", alternateNo="
-				+ alternateNo + ", addressList=" + addressList + "]";
+				+ alternateNo + ", addressList=" + addressList + ", treatmentList=" + treatmentList + "]";
 	}
-
-
-
-
-
 	
 
 	
-//
+	//
 //	public String getAddress_id() {
 //		return addressid;
 //	}

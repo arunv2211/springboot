@@ -1,104 +1,135 @@
 package com.example.demo.model;
 
+import java.sql.Date;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="patient_medication")
 public class patientMedication {
 	@Id
-	@Column(name="user_id", length = 100)
-	private Integer userId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="medication_id", length = 100)
+	private Integer medicationId;
 	
-	@Column(name="medicine_name", length = 200)
-	private String medicineName;
+	@Column(name="treatment_id_fk", length = 200)
+	private Integer treatmentId;
+	
+	@Column(name="medicine", length = 200)
+	private String medicine;
 	
 	@Column(name="dosage", length = 200)
-	private Integer dosage;
+	private String dosage;
 	
-
-	@Column(name="start_date", length = 200)
-	private String startDate;
+	@Column(name="created_at", length = 100)
+	private Date createdAt;
 	
-	@Column(name="end_date", length = 200)
-	private Integer endDate;
+	@Column(name="updated_at", length = 100)
+	private Date updatedAt;
 	
-	@Column(name="time_id", length = 100)
-	private Integer timeId;
-
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="medication_fk_id")
+	private List<PatientMedicationDosage> timeList;
+	
 	public patientMedication() {
 
 	}
 
-	public patientMedication(Integer userId, String medicineName, Integer dosage, String startDate, Integer endDate,
-			Integer timeId) {
+	public patientMedication(Integer medicationId, Integer treatmentId, String medicine, String dosage, Date createdAt,
+			Date updatedAt, List<PatientMedicationDosage> timeList) {
 		super();
-		this.userId = userId;
-		this.medicineName = medicineName;
+		this.medicationId = medicationId;
+		this.treatmentId = treatmentId;
+		this.medicine = medicine;
 		this.dosage = dosage;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.timeId = timeId;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.timeList = timeList;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public Integer getMedicationId() {
+		return medicationId;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setMedicationId(Integer medicationId) {
+		this.medicationId = medicationId;
 	}
 
-	public String getMedicineName() {
-		return medicineName;
+	public Integer getTreatmentId() {
+		return treatmentId;
 	}
 
-	public void setMedicineName(String medicineName) {
-		this.medicineName = medicineName;
+	public void setTreatmentId(Integer treatmentId) {
+		this.treatmentId = treatmentId;
 	}
 
-	public Integer getDosage() {
+	public String getMedicine() {
+		return medicine;
+	}
+
+	public void setMedicine(String medicine) {
+		this.medicine = medicine;
+	}
+
+	public String getDosage() {
 		return dosage;
 	}
 
-	public void setDosage(Integer dosage) {
+	public void setDosage(String dosage) {
 		this.dosage = dosage;
 	}
+	
 
-	public String getStartDate() {
-		return startDate;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	public Integer getEndDate() {
-		return endDate;
+
+
+	public Date getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setEndDate(Integer endDate) {
-		this.endDate = endDate;
+
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	
+
+
+
+	public List<PatientMedicationDosage> getTimeList() {
+		return timeList;
 	}
 
-	public Integer getTimeId() {
-		return timeId;
-	}
-
-	public void setTimeId(Integer timeId) {
-		this.timeId = timeId;
+	public void setTimeList(List<PatientMedicationDosage> timeList) {
+		this.timeList = timeList;
 	}
 
 	@Override
 	public String toString() {
-		return "patientMedication [userId=" + userId + ", medicineName=" + medicineName + ", dosage=" + dosage
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", timeId=" + timeId + "]";
+		return "patientMedication [medicationId=" + medicationId + ", treatmentId=" + treatmentId + ", medicine="
+				+ medicine + ", dosage=" + dosage + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ ", timeList=" + timeList + "]";
 	}
-	
 
+	
 
 }
