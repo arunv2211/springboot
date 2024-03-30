@@ -19,7 +19,7 @@ public interface UserService {
 	
 	//Treatment table services
 	public Treatment getTreatmentById(Integer user_id_fk);
-	public String postTreatment(TreatmentDto treatmentDto,PatientMedicationDosageDto patientMedicationDto);
+	public String postTreatment(TreatmentDto treatmentDto);
 	public String deleteTreatment(Integer id);
 	public Treatment getTreatmentByUserId(Integer user_id_fk);
 

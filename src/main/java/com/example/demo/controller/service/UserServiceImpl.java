@@ -114,25 +114,28 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String postTreatment(TreatmentDto treatmentDto,PatientMedicationDosageDto patientMedicationDosageDto) {
+	public String postTreatment(TreatmentDto treatmentDto) {
 		Treatment treatment = new Treatment();
 		patientMedication medicationObject = new patientMedication();
-		PatientMedicationDosage dosageObject = new PatientMedicationDosage();
-		treatment.setUserIdFk(treatmentDto.getUserIdFk());
+//		PatientMedicationDosage dosageObject = new PatientMedicationDosage();
+//		PatientMedicationDosageDto patientMedicationDosageDto = new PatientMedicationDosageDto();
+//		treatment.setUserIdFk(treatmentDto.getUserIdFk());
 		treatment.setSummary(treatmentDto.getSummary());
 		treatment.setSuggestion(treatmentDto.getSuggestion());
 		treatment.setDiagnosis(treatmentDto.getDiagnosis());
 		treatment.setConclusion(treatmentDto.getConclusion());
 		treatment.setAppointmentDate(treatmentDto.getAppointmentDate());
 		treatment.setPatientMendicationList(treatmentDto.getPatientMendicationList());
+		
 		treatmentRepo.save(treatment);
 //		dosageObject.setMedicationFkId(medicationObject.getMedicationId());
-		dosageObject.setMorning(patientMedicationDosageDto.isMorning());
-		dosageObject.setAfternoon(patientMedicationDosageDto.isAfternoon());
-		dosageObject.setNight(patientMedicationDosageDto.isNight());
-		dosageObject.setBefore(patientMedicationDosageDto.isBefore());
-		dosageObject.setAfter(patientMedicationDosageDto.isAfter());
-		patientDosageRepo.save(dosageObject);
+//		dosageObject.setMorning(patientMedicationDosageDto.isMorning());
+//		dosageObject.setAfternoon(patientMedicationDosageDto.isAfternoon());
+//		dosageObject.setNight(patientMedicationDosageDto.isNight());
+//		dosageObject.setBefore(patientMedicationDosageDto.isBefore());
+//		dosageObject.setAfter(patientMedicationDosageDto.isAfter());
+	
+//		patientDosageRepo.save(dosageObject);
 		return "Success";
 	}
 

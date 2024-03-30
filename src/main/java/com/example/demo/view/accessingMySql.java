@@ -77,8 +77,8 @@ public class accessingMySql {
 	//Treatment table GET POST PUT DELETE...
 	//To post details of Treatment...
 	@PostMapping("/treatmentpost")
-	public @ResponseBody String treatmentpost(@RequestBody TreatmentDto treatmentDto,@RequestBody PatientMedicationDosageDto patientMedicationDto) {
-		return userService.postTreatment(treatmentDto,patientMedicationDto);
+	public @ResponseBody String treatmentpost(@RequestBody TreatmentDto treatmentDto) {
+		return userService.postTreatment(treatmentDto);
 	}
 	
 	//To Get treatment table
