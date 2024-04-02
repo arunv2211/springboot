@@ -49,7 +49,7 @@ public class Treatment {
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="treatment_id_fk")
-	private List<patientMedication> patientMendicationList;
+	private List<patientMedication> patientMedicationList;
 	
 	public Treatment() {
 	
@@ -58,7 +58,7 @@ public class Treatment {
 	
 	public Treatment(Integer treatmentId, Integer userIdFk, String summary, String suggestion, String diagnosis,
 			String conclusion, Date appointmentDate, Date createdAt, Date updatedAt,
-			List<patientMedication> patientMendicationList) {
+			List<patientMedication> patientMedicationList) {
 		super();
 		this.treatmentId = treatmentId;
 		this.userIdFk = userIdFk;
@@ -69,7 +69,7 @@ public class Treatment {
 		this.appointmentDate = appointmentDate;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-		this.patientMendicationList = patientMendicationList;
+		this.patientMedicationList = patientMedicationList;
 	}
 
 
@@ -143,12 +143,12 @@ public class Treatment {
 		this.updatedAt = updateddAt;
 	}
 	
-	public List<patientMedication> getPatientMendicationList() {
-		return patientMendicationList;
+	public List<patientMedication> getPatientMedicationList() {
+		return patientMedicationList;
 	}
 
-	public void setPatientMendicationList(List<patientMedication> patientMendicationList) {
-		this.patientMendicationList = patientMendicationList;
+	public void setPatientMedicationList(List<patientMedication> patientMedicationList) {
+		this.patientMedicationList = patientMedicationList;
 	}
 
 	@Override
@@ -156,7 +156,7 @@ public class Treatment {
 		return "Treatment [treatmentId=" + treatmentId + ", userIdFk=" + userIdFk + ", summary=" + summary
 				+ ", suggestion=" + suggestion + ", diagnosis=" + diagnosis + ", conclusion=" + conclusion
 				+ ", appointmentDate=" + appointmentDate + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
-				+ ", patientMendicationList=" + patientMendicationList + "]";
+				+ ", patientMendicationList=" + patientMedicationList + "]";
 	}
 	
 }

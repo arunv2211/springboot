@@ -15,7 +15,7 @@ public class TreatmentDto {
 	private Date appointmentDate;
 	private Date createdAt;
 	private Date updateddAt;
-	private List<patientMedication> patientMendicationList;
+	private List<patientMedication> patientMedicationList;
 	
 	public TreatmentDto() {
 	
@@ -24,7 +24,7 @@ public class TreatmentDto {
 	
 	public TreatmentDto(Integer treatmentId, Integer userIdFk, String summary, String suggestion, String diagnosis,
 			String conclusion, Date appointmentDate, Date createdAt, Date updateddAt,
-			List<patientMedication> patientMendicationList) {
+			List<patientMedication> patientMedicationList) {
 		super();
 		this.treatmentId = treatmentId;
 		this.userIdFk = userIdFk;
@@ -35,7 +35,7 @@ public class TreatmentDto {
 		this.appointmentDate = appointmentDate;
 		this.createdAt = createdAt;
 		this.updateddAt = updateddAt;
-		this.patientMendicationList = patientMendicationList;
+		this.patientMedicationList = patientMedicationList;
 	}
 
 
@@ -112,13 +112,13 @@ public class TreatmentDto {
 	}
 
 
-	public List<patientMedication> getPatientMendicationList() {
-		return patientMendicationList;
+	public List<patientMedication> getPatientMedicationList() {
+		return patientMedicationList;
 	}
 
 
-	public void setPatientMendicationList(List<patientMedication> patientMendicationList) {
-		this.patientMendicationList = patientMendicationList;
+	public void setPatientMedicationList(List<patientMedication> patientMedicationList) {
+		this.patientMedicationList = patientMedicationList;
 	}
 
 
@@ -127,6 +127,6 @@ public class TreatmentDto {
 		return "TreatmentDto [treatmentId=" + treatmentId + ", userIdFk=" + userIdFk + ", summary=" + summary
 				+ ", suggestion=" + suggestion + ", diagnosis=" + diagnosis + ", conclusion=" + conclusion
 				+ ", appointmentDate=" + appointmentDate + ", createdAt=" + createdAt + ", updateddAt=" + updateddAt
-				+ ", patientMendicationList=" + patientMendicationList + "]";
+				+ ", patientMedicationList=" + patientMedicationList + "]";
 	}
 }

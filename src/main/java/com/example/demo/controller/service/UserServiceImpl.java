@@ -8,6 +8,7 @@ import com.example.demo.controller.dto.AddressDto;
 import com.example.demo.controller.dto.PatientMedicationDosageDto;
 import com.example.demo.controller.dto.PatientMedicationDto;
 import com.example.demo.controller.dto.TreatmentDto;
+import com.example.demo.controller.dto.UserAddressDto;
 //import com.example.demo.controller.Response.MainResponseData;
 //import com.example.demo.controller.Response.dataResponse;
 import com.example.demo.controller.dto.UserDto;
@@ -48,6 +49,22 @@ public class UserServiceImpl implements UserService {
 		Optional<User> userOptional = userRepository.findById(id);
 		userRepository.deleteById(id);
 		return "Success";
+	}
+	
+	@Transactional
+	@Override
+	public UserAddressDto getUserDetail(Integer id) {
+		User user = userRepository.getUserDetail(id);
+		UserAddressDto userAddress = new UserAddressDto();
+		userAddress.setUserId(user.getUserId());
+		userAddress.setUserName(user.getUserName());
+		userAddress.setAge(user.getAge());
+		userAddress.setGender(user.getGender());
+		userAddress.setDateOfBirth(user.getDateOfBirth());
+		userAddress.setPhoneNo(user.getPhoneNo());
+		userAddress.setAternateNo(user.getAlternateNo());
+		userAddress.setAddress(user.getAddressList());
+		return userAddress;
 	}
 
 	@Transactional
@@ -105,7 +122,27 @@ public class UserServiceImpl implements UserService {
 		User userData = userRepository.findByUserName(userName, password);
 		return userData;
 	}
+	
+	@Transactional
+	@Override
+	public boolean checkUser(String username, String password) {
+		boolean result = true;
+		
+		User userData = userRepository.findByUserName(username, password);
+		if(userData == null) {
+			result = false;
+		}
+		else {
+			result = true;	
+		}
+		
+		return result;
 
+		
+	}
+
+
+	@Transactional
 	@Override
 	public User getUserById(Integer userid) {
 		Optional<User> user = userRepository.findById(userid);
@@ -113,19 +150,20 @@ public class UserServiceImpl implements UserService {
 		return userObj;
 	}
 
+	@Transactional
 	@Override
 	public String postTreatment(TreatmentDto treatmentDto) {
 		Treatment treatment = new Treatment();
 		patientMedication medicationObject = new patientMedication();
 //		PatientMedicationDosage dosageObject = new PatientMedicationDosage();
 //		PatientMedicationDosageDto patientMedicationDosageDto = new PatientMedicationDosageDto();
-//		treatment.setUserIdFk(treatmentDto.getUserIdFk());
+		treatment.setUserIdFk(treatmentDto.getUserIdFk());
 		treatment.setSummary(treatmentDto.getSummary());
 		treatment.setSuggestion(treatmentDto.getSuggestion());
 		treatment.setDiagnosis(treatmentDto.getDiagnosis());
 		treatment.setConclusion(treatmentDto.getConclusion());
 		treatment.setAppointmentDate(treatmentDto.getAppointmentDate());
-		treatment.setPatientMendicationList(treatmentDto.getPatientMendicationList());
+		treatment.setPatientMedicationList(treatmentDto.getPatientMedicationList());
 		
 		treatmentRepo.save(treatment);
 //		dosageObject.setMedicationFkId(medicationObject.getMedicationId());
@@ -139,6 +177,7 @@ public class UserServiceImpl implements UserService {
 		return "Success";
 	}
 
+	@Transactional
 	@Override
 	public String deleteTreatment(Integer id) {
 		Optional<Treatment> treatment = treatmentRepo.findById(id);
@@ -146,6 +185,7 @@ public class UserServiceImpl implements UserService {
 		return "Deleted Successfully";
 	}
 
+	@Transactional
 	@Override
 	public Treatment getTreatmentById(Integer treatment_id) {
 		Optional<Treatment> treatmentObject = treatmentRepo.findById(treatment_id);
@@ -154,11 +194,21 @@ public class UserServiceImpl implements UserService {
 		return treatmentgetObject;
 	}
 	
+//	@Override
+//	public Treatment getTreatmentByUserId(Integer user_id_fk) {
+//		Optional<Treatment> treatmentObj = treatmentRepo.findTreatmentByUserId(user_id_fk);
+//		Treatment treatmentGetObj = treatmentObj.get();
+//		return treatmentGetObj; 
+//	}
+
+	@Transactional
 	@Override
-	public Treatment getTreatmentByUserId(Integer user_id_fk) {
-		Optional<Treatment> treatmentObj = treatmentRepo.findTreatmentByUserId(user_id_fk);
-		Treatment treatmentGetObj = treatmentObj.get();
-		return treatmentGetObj; 
+	public List<Treatment> treatmentList(Integer user_id_fk) {
+		List<Treatment> treatmentObject = treatmentRepo.getTreatmentList(user_id_fk);
+		return treatmentObject;
 	}
 
+	
+
+	
 }

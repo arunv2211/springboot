@@ -19,7 +19,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="user")
 public class User {
-	
 	@Id
 	@Column(name="user_id", length = 30)
 	@GeneratedValue(strategy = GenerationType.AUTO)
