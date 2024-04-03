@@ -18,12 +18,11 @@ import jakarta.persistence.Table;
 @Table(name="treatment")
 public class Treatment {
 	@Id
-	@Column(name="treatment_id", length = 100)
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="treatment_id")
 	private Integer treatmentId;
 	
-	
-	@Column(name="user_id_fk", length = 100)
+	@Column(name="user_id_fk")
 	private Integer userIdFk;
 	
 	@Column(name="summary", length = 500)
@@ -38,14 +37,9 @@ public class Treatment {
 	@Column(name="conclusion", length = 500)
 	private String conclusion;
 	
-	@Column(name="appointmen_date", length = 500)
-	private Date appointmentDate;
+	@Column(name="appointment", length =20)
+	private String appointmentDate;
 	
-	@Column(name="created_at", length = 100)
-	private Date createdAt;
-	
-	@Column(name="updated_at", length = 100)
-	private Date updatedAt;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="treatment_id_fk")
@@ -57,7 +51,7 @@ public class Treatment {
 
 	
 	public Treatment(Integer treatmentId, Integer userIdFk, String summary, String suggestion, String diagnosis,
-			String conclusion, Date appointmentDate, Date createdAt, Date updatedAt,
+			String conclusion, String appointmentDate,
 			List<patientMedication> patientMedicationList) {
 		super();
 		this.treatmentId = treatmentId;
@@ -67,8 +61,6 @@ public class Treatment {
 		this.diagnosis = diagnosis;
 		this.conclusion = conclusion;
 		this.appointmentDate = appointmentDate;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
 		this.patientMedicationList = patientMedicationList;
 	}
 
@@ -121,28 +113,14 @@ public class Treatment {
 		this.conclusion = conclusion;
 	}
 
-	public Date getAppointmentDate() {
+	public String getAppointmentDate() {
 		return appointmentDate;
 	}
 
-	public void setAppointmentDate(Date appointmentDate) {
+	public void setAppointmentDate(String appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
 
-	
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	public Date getUpdateddAt() {
-		return updatedAt;
-	}
-	public void setUpdateddAt(Date updateddAt) {
-		this.updatedAt = updateddAt;
-	}
-	
 	public List<patientMedication> getPatientMedicationList() {
 		return patientMedicationList;
 	}
@@ -151,12 +129,13 @@ public class Treatment {
 		this.patientMedicationList = patientMedicationList;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Treatment [treatmentId=" + treatmentId + ", userIdFk=" + userIdFk + ", summary=" + summary
 				+ ", suggestion=" + suggestion + ", diagnosis=" + diagnosis + ", conclusion=" + conclusion
-				+ ", appointmentDate=" + appointmentDate + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
-				+ ", patientMendicationList=" + patientMedicationList + "]";
+				+ ", appointmentDate=" + appointmentDate + ", patientMedicationList=" + patientMedicationList + "]";
 	}
+
 	
 }

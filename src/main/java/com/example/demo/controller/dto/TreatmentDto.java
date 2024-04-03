@@ -12,19 +12,14 @@ public class TreatmentDto {
 	private String suggestion;
 	private String diagnosis;
 	private String conclusion;
-	private Date appointmentDate;
-	private Date createdAt;
-	private Date updateddAt;
+	private String appointmentDate;
 	private List<patientMedication> patientMedicationList;
 	
 	public TreatmentDto() {
 	
 	}
-
-	
 	public TreatmentDto(Integer treatmentId, Integer userIdFk, String summary, String suggestion, String diagnosis,
-			String conclusion, Date appointmentDate, Date createdAt, Date updateddAt,
-			List<patientMedication> patientMedicationList) {
+			String conclusion, String appointmentDate, List<patientMedication> patientMedicationList) {
 		super();
 		this.treatmentId = treatmentId;
 		this.userIdFk = userIdFk;
@@ -33,12 +28,8 @@ public class TreatmentDto {
 		this.diagnosis = diagnosis;
 		this.conclusion = conclusion;
 		this.appointmentDate = appointmentDate;
-		this.createdAt = createdAt;
-		this.updateddAt = updateddAt;
 		this.patientMedicationList = patientMedicationList;
 	}
-
-
 	public Integer getTreatmentId() {
 		return treatmentId;
 	}
@@ -87,30 +78,13 @@ public class TreatmentDto {
 		this.conclusion = conclusion;
 	}
 
-	public Date getAppointmentDate() {
+	public String getAppointmentDate() {
 		return appointmentDate;
 	}
 
-	public void setAppointmentDate(Date appointmentDate) {
+	public void setAppointmentDate(String appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdateddAt() {
-		return updateddAt;
-	}
-
-	public void setUpdateddAt(Date updateddAt) {
-		this.updateddAt = updateddAt;
-	}
-
 
 	public List<patientMedication> getPatientMedicationList() {
 		return patientMedicationList;
@@ -120,13 +94,12 @@ public class TreatmentDto {
 	public void setPatientMedicationList(List<patientMedication> patientMedicationList) {
 		this.patientMedicationList = patientMedicationList;
 	}
-
-
 	@Override
 	public String toString() {
 		return "TreatmentDto [treatmentId=" + treatmentId + ", userIdFk=" + userIdFk + ", summary=" + summary
 				+ ", suggestion=" + suggestion + ", diagnosis=" + diagnosis + ", conclusion=" + conclusion
-				+ ", appointmentDate=" + appointmentDate + ", createdAt=" + createdAt + ", updateddAt=" + updateddAt
-				+ ", patientMedicationList=" + patientMedicationList + "]";
+				+ ", appointmentDate=" + appointmentDate + ", patientMedicationList=" + patientMedicationList + "]";
 	}
+
+
 }

@@ -8,34 +8,47 @@ import com.example.demo.model.Treatment;
 
 public class UserAddressDto {
 	private Integer userId;
+	private String name;
 	private String userName;
 	private Integer age;
 	private String gender;
 	private Date dateOfBirth;
 	private Long phoneNo;
-	private Long aternateNo;
+	private Long alternateNo;
 	private List<Address> address;
 	public UserAddressDto() {
 		
 	}
-	public UserAddressDto(Integer userId, String userName, Integer age, String gender, Date dateOfBirth, Long phoneNo,
-			Long aternateNo, List<Address> address) {
+	
+	public UserAddressDto(Integer userId, String name, String userName, Integer age, String gender, Date dateOfBirth,
+			Long phoneNo, Long alternateNo, List<Address> address) {
 		super();
 		this.userId = userId;
+		this.name = name;
 		this.userName = userName;
 		this.age = age;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.phoneNo = phoneNo;
-		this.aternateNo = aternateNo;
+		this.alternateNo = alternateNo;
 		this.address = address;
 	}
+
 	public Integer getUserId() {
 		return userId;
 	}
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
@@ -66,11 +79,11 @@ public class UserAddressDto {
 	public void setPhoneNo(Long phoneNo) {
 		this.phoneNo = phoneNo;
 	}
-	public Long getAternateNo() {
-		return aternateNo;
+	public Long getAlternateNo() {
+		return alternateNo;
 	}
-	public void setAternateNo(Long aternateNo) {
-		this.aternateNo = aternateNo;
+	public void setAlternateNo(Long aternateNo) {
+		this.alternateNo = aternateNo;
 	}
 	public List<Address> getAddress() {
 		return address;
@@ -78,12 +91,14 @@ public class UserAddressDto {
 	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
+
 	@Override
 	public String toString() {
-		return "userAddressDto [userId=" + userId + ", userName=" + userName + ", age=" + age + ", gender=" + gender
-				+ ", dateOfBirth=" + dateOfBirth + ", phoneNo=" + phoneNo + ", aternateNo=" + aternateNo + ", address="
-				+ address + "]";
+		return "UserAddressDto [userId=" + userId + ", name=" + name + ", userName=" + userName + ", age=" + age
+				+ ", gender=" + gender + ", dateOfBirth=" + dateOfBirth + ", phoneNo=" + phoneNo + ", alternateNo="
+				+ alternateNo + ", address=" + address + "]";
 	}
+	
 	
 
 	

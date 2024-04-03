@@ -91,8 +91,12 @@ public class accessingMySql {
 	//To post details of Treatment...
 	@PostMapping("/treatmentpost")
 	public @ResponseBody String treatmentpost(@RequestBody TreatmentDto treatmentDto) {
+		
+		System.out.println("consle ----->"+treatmentDto.toString());
 		return userService.postTreatment(treatmentDto);
 	}
+	
+
 	
 	//To Get treatment table
 	@GetMapping("/gettreatmentbyid/{treatmentid}")

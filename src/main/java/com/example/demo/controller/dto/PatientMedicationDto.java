@@ -11,8 +11,6 @@ public class PatientMedicationDto {
 	private Integer treatmentId;
 	private String medicine;
 	private String dosage;
-	private Date createdAt;
-	private Date updatedAt;
 	private List<PatientMedicationDosageDto> timeList;
 	
 	public PatientMedicationDto() {
@@ -20,14 +18,12 @@ public class PatientMedicationDto {
 	}
 
 	public PatientMedicationDto(Integer medicationId, Integer treatmentId, String medicine, String dosage,
-			Date createdAt, Date updatedAt, List<PatientMedicationDosageDto> timeList) {
+			 List<PatientMedicationDosageDto> timeList) {
 		super();
 		this.medicationId = medicationId;
 		this.treatmentId = treatmentId;
 		this.medicine = medicine;
 		this.dosage = dosage;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
 		this.timeList = timeList;
 	}
 
@@ -63,22 +59,6 @@ public class PatientMedicationDto {
 		this.dosage = dosage;
 	}
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
 	public List<PatientMedicationDosageDto> getTimeList() {
 		return timeList;
 	}
@@ -90,8 +70,7 @@ public class PatientMedicationDto {
 	@Override
 	public String toString() {
 		return "PatientMedicationDto [medicationId=" + medicationId + ", treatmentId=" + treatmentId + ", medicine="
-				+ medicine + ", dosage=" + dosage + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
-				+ ", timeList=" + timeList + "]";
+				+ medicine + ", dosage=" + dosage + ", timeList=" + timeList + "]";
 	}
 
 	

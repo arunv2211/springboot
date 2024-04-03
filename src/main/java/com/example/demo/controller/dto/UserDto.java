@@ -9,13 +9,14 @@ import com.example.demo.model.patientMedication;
 
 public class UserDto {
 	private Integer userId;
+	private String name;
 	private String userName;
 	private String password;
 	private Integer age;
 	private String gender;
 	private Date dateOfBirth;
 	private Long phoneNo;
-	private Long aternateNo;
+	private Long alternateNo;
 	private List<Address> address;
 	private List<Treatment> treatmentList;
 
@@ -23,35 +24,35 @@ public class UserDto {
 
 	}
 
-	public UserDto(Integer userId, String userName, String password, Integer age, String gender, Date dateOfBirth,
-			Long phoneNo, Long aternateNo, List<Address> address, List<Treatment> treatmentList) {
+	public UserDto(Integer userId, String name, String userName, String password, Integer age, String gender,
+			Date dateOfBirth, Long phoneNo, Long alternateNo, List<Address> address, List<Treatment> treatmentList) {
 		super();
 		this.userId = userId;
+		this.name = name;
 		this.userName = userName;
 		this.password = password;
 		this.age = age;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.phoneNo = phoneNo;
-		this.aternateNo = aternateNo;
+		this.alternateNo = alternateNo;
 		this.address = address;
 		this.treatmentList = treatmentList;
 	}
-
-	public List<Treatment> getTreatmentList() {
-		return treatmentList;
-	}
-
-	public void setTreatmentList(List<Treatment> treatmentList) {
-		this.treatmentList = treatmentList;
-	}
-
 	public Integer getUserId() {
 		return userId;
 	}
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getUserName() {
@@ -102,12 +103,12 @@ public class UserDto {
 		this.phoneNo = phoneNo;
 	}
 
-	public Long getAternateNo() {
-		return aternateNo;
+	public Long getAlternateNo() {
+		return alternateNo;
 	}
 
-	public void setAternateNo(Long aternateNo) {
-		this.aternateNo = aternateNo;
+	public void setAlternateNo(Long aternateNo) {
+		this.alternateNo = aternateNo;
 	}
 
 	public List<Address> getAddress() {
@@ -118,11 +119,19 @@ public class UserDto {
 		this.address = address;
 	}
 
+	public List<Treatment> getTreatmentList() {
+		return treatmentList;
+	}
+
+	public void setTreatmentList(List<Treatment> treatmentList) {
+		this.treatmentList = treatmentList;
+	}
+
 	@Override
 	public String toString() {
-		return "UserDto [userId=" + userId + ", userName=" + userName + ", password=" + password + ", age=" + age
-				+ ", gender=" + gender + ", dateOfBirth=" + dateOfBirth + ", phoneNo=" + phoneNo + ", aternateNo="
-				+ aternateNo + ", address=" + address + ", treatmentList=" + treatmentList + "]";
+		return "UserDto [userId=" + userId + ", name=" + name + ", userName=" + userName + ", password=" + password
+				+ ", age=" + age + ", gender=" + gender + ", dateOfBirth=" + dateOfBirth + ", phoneNo=" + phoneNo
+				+ ", alternateNo=" + alternateNo + ", address=" + address + ", treatmentList=" + treatmentList + "]";
 	}
 
 }

@@ -23,6 +23,8 @@ public class User {
 	@Column(name="user_id", length = 30)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer userId;
+	@Column(name="name", length = 100)
+	private String name;
 	@Column(name="username", length = 100)
 	private String userName;
 	@Column(name="password", length = 100)
@@ -35,7 +37,7 @@ public class User {
 	private Date dateOfBirth;
 	@Column(name="phone_no")
 	private Long phoneNo;
-	@Column(name="aternate_no")
+	@Column(name="alternate_no")
 	private Long alternateNo;
 //	@Column(name="address_id", length = 100)
 //	private Integer addressId;
@@ -57,12 +59,12 @@ public class User {
 	
 	}
 
-	
-
-	public User(Integer userId, String userName, String password, Integer age, String gender, Date dateOfBirth,
-			Long phoneNo, Long alternateNo, List<Address> addressList, List<Treatment> treatmentList) {
+	public User(Integer userId, String name, String userName, String password, Integer age, String gender,
+			Date dateOfBirth, Long phoneNo, Long alternateNo, List<Address> addressList,
+			List<Treatment> treatmentList) {
 		super();
 		this.userId = userId;
+		this.name = name;
 		this.userName = userName;
 		this.password = password;
 		this.age = age;
@@ -75,142 +77,81 @@ public class User {
 	}
 
 
-
 	public Integer getUserId() {
 		return userId;
 	}
-
-
-
-
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
+	public String getName() {
+		return name;
+	}
 
-
-
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getUserName() {
 		return userName;
 	}
 
-
-
-
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-
-
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
-
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
-
-
 
 	public Integer getAge() {
 		return age;
 	}
 
-
-
-
-
 	public void setAge(Integer age) {
 		this.age = age;
 	}
-
-
-
-
 
 	public String getGender() {
 		return gender;
 	}
 
-
-
-
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-
-
-
 
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-
-
-
-
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-
-
-
-
 
 	public Long getPhoneNo() {
 		return phoneNo;
 	}
 
-
-
-
-
 	public void setPhoneNo(Long phoneNo) {
 		this.phoneNo = phoneNo;
 	}
-
-
-
-
 
 	public Long getAlternateNo() {
 		return alternateNo;
 	}
 
-
-
-
-
 	public void setAlternateNo(Long alternateNo) {
 		this.alternateNo = alternateNo;
 	}
 
-
-
-
-
 	public List<Address> getAddressList() {
 		return addressList;
 	}
-
-
-
-
 
 	public void setAddressList(List<Address> addressList) {
 		this.addressList = addressList;
@@ -226,22 +167,11 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", age=" + age
-				+ ", gender=" + gender + ", dateOfBirth=" + dateOfBirth + ", phoneNo=" + phoneNo + ", alternateNo="
-				+ alternateNo + ", addressList=" + addressList + ", treatmentList=" + treatmentList + "]";
+		return "User [userId=" + userId + ", name=" + name + ", userName=" + userName + ", password=" + password
+				+ ", age=" + age + ", gender=" + gender + ", dateOfBirth=" + dateOfBirth + ", phoneNo=" + phoneNo
+				+ ", alternateNo=" + alternateNo + ", addressList=" + addressList + ", treatmentList=" + treatmentList
+				+ "]";
 	}
-	
-
-	
-	//
-//	public String getAddress_id() {
-//		return addressid;
-//	}
-//
-//
-//	public void setAddress_id(String address_id) {
-//		this.address_id = address_id;
-//	}
 	
 	
 	

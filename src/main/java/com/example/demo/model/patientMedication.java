@@ -30,12 +30,7 @@ public class patientMedication {
 	
 	@Column(name="dosage", length = 200)
 	private String dosage;
-	
-	@Column(name="created_at", length = 100)
-	private Date createdAt;
-	
-	@Column(name="updated_at", length = 100)
-	private Date updatedAt;
+
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="medication_fk_id")
@@ -45,15 +40,12 @@ public class patientMedication {
 
 	}
 
-	public patientMedication(Integer medicationId, Integer treatmentId, String medicine, String dosage, Date createdAt,
-			Date updatedAt, List<PatientMedicationDosage> timeList) {
+	public patientMedication(Integer medicationId, Integer treatmentId, String medicine, String dosage, List<PatientMedicationDosage> timeList) {
 		super();
 		this.medicationId = medicationId;
 		this.treatmentId = treatmentId;
 		this.medicine = medicine;
 		this.dosage = dosage;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
 		this.timeList = timeList;
 	}
 
@@ -89,32 +81,6 @@ public class patientMedication {
 		this.dosage = dosage;
 	}
 	
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-	
-
-
-
 	public List<PatientMedicationDosage> getTimeList() {
 		return timeList;
 	}
@@ -126,10 +92,9 @@ public class patientMedication {
 	@Override
 	public String toString() {
 		return "patientMedication [medicationId=" + medicationId + ", treatmentId=" + treatmentId + ", medicine="
-				+ medicine + ", dosage=" + dosage + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
-				+ ", timeList=" + timeList + "]";
+				+ medicine + ", dosage=" + dosage + ", timeList=" + timeList + "]";
 	}
 
-	
+		
 
 }

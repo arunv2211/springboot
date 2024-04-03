@@ -22,6 +22,7 @@ public interface UserService {
 	public UserAddressDto getUserDetail(Integer id);
 	
 	//Treatment table services
+	
 	public Treatment getTreatmentById(Integer user_id_fk);
 	public String postTreatment(TreatmentDto treatmentDto);
 	public String deleteTreatment(Integer id);

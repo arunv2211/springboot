@@ -11,8 +11,6 @@ public class PatientMedicationDosageDto {
 	private boolean night;
 	private boolean before;
 	private boolean after;
-	private Date createdAt;
-	private Date updateddAt;
 	public PatientMedicationDosageDto() {	
 	}
 	
@@ -26,15 +24,14 @@ public class PatientMedicationDosageDto {
 		this.night = night;
 		this.before = before;
 		this.after = after;
-		this.createdAt = createdAt;
-		this.updateddAt = updateddAt;
+		
 	}
 
 	@Override
 	public String toString() {
 		return "PatientMedicationDosageDto [treatmentId=" + treatmentId + ", medicationFkId=" + medicationFkId
 				+ ", morning=" + morning + ", afternoon=" + afternoon + ", night=" + night + ", before=" + before
-				+ ", after=" + after + ", createdAt=" + createdAt + ", updateddAt=" + updateddAt + "]";
+				+ ", after=" + after + "]";
 	}
 
 	public Integer getTreatmentId() {
@@ -93,22 +90,7 @@ public class PatientMedicationDosageDto {
 		this.after = after;
 	}
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdateddAt() {
-		return updateddAt;
-	}
-
-	public void setUpdateddAt(Date updateddAt) {
-		this.updateddAt = updateddAt;
-	}
-	
 	
 
 }

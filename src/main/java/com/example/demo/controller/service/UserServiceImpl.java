@@ -57,12 +57,13 @@ public class UserServiceImpl implements UserService {
 		User user = userRepository.getUserDetail(id);
 		UserAddressDto userAddress = new UserAddressDto();
 		userAddress.setUserId(user.getUserId());
+		userAddress.setName(user.getName());
 		userAddress.setUserName(user.getUserName());
 		userAddress.setAge(user.getAge());
 		userAddress.setGender(user.getGender());
 		userAddress.setDateOfBirth(user.getDateOfBirth());
 		userAddress.setPhoneNo(user.getPhoneNo());
-		userAddress.setAternateNo(user.getAlternateNo());
+		userAddress.setAlternateNo(user.getAlternateNo());
 		userAddress.setAddress(user.getAddressList());
 		return userAddress;
 	}
@@ -72,13 +73,14 @@ public class UserServiceImpl implements UserService {
 	public String postUser(UserDto userDto) {
 		User user = new User();
 		user.setUserId(userDto.getUserId());
+		user.setName(userDto.getName());
 		user.setUserName(userDto.getUserName());
 		user.setPassword(userDto.getPassword());
 		user.setAge(userDto.getAge());
 		user.setGender(userDto.getGender());
 		user.setDateOfBirth(userDto.getDateOfBirth());
 		user.setPhoneNo(userDto.getPhoneNo());
-		user.setAlternateNo(userDto.getAternateNo());
+		user.setAlternateNo(userDto.getAlternateNo());
 		user.setAddressList(userDto.getAddress());
 		userRepository.save(user);
 //		System.out.println(user.getUserName()+user.getPassword()+"hello");
@@ -104,13 +106,14 @@ public class UserServiceImpl implements UserService {
 		Optional<User> optionalUser = userRepository.findById(userDto.getUserId());
 		User userObject = optionalUser.get();
 		userObject.setUserId(userDto.getUserId());
+		userObject.setName(userDto.getName());
 		userObject.setUserName(userDto.getUserName());
 		userObject.setPassword(userDto.getPassword());
 		userObject.setAge(userDto.getAge());
 		userObject.setGender(userDto.getGender());
 		userObject.setDateOfBirth(userDto.getDateOfBirth());
 		userObject.setPhoneNo(userDto.getPhoneNo());
-		userObject.setAlternateNo(userDto.getAternateNo());
+		userObject.setAlternateNo(userDto.getAlternateNo());
 //		userObject.setAddressList(userDto.getAddress());
 		return "Success";
 	}
@@ -207,6 +210,7 @@ public class UserServiceImpl implements UserService {
 		List<Treatment> treatmentObject = treatmentRepo.getTreatmentList(user_id_fk);
 		return treatmentObject;
 	}
+
 
 	
 
