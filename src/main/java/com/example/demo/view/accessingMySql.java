@@ -10,6 +10,7 @@ import com.example.demo.controller.service.UserService;
 import com.example.demo.model.PatientMedicationDosage;
 import com.example.demo.model.Treatment;
 import com.example.demo.model.User;
+import com.example.demo.model.patientMedication;
 
 import java.util.List;
 
@@ -34,7 +35,6 @@ public class accessingMySql {
 	@Autowired
 	private UserRepository userRepository;
 	
-	
 	//To get all users...
 	@GetMapping("/userdetails")
 	public @ResponseBody MainResponseData getAllUsers(){
@@ -43,7 +43,7 @@ public class accessingMySql {
 	
 	//To check a user is exist or not
 	@GetMapping("/checkuser/{username}/{password}")
-	public @ResponseBody boolean checkUser(@PathVariable("username") String username,@PathVariable("password") String password) {
+	public @ResponseBody  MainResponseData checkUser(@PathVariable("username") String username,@PathVariable("password") String password) {
 		return userService.checkUser(username, password);
 	}
 	
@@ -115,11 +115,23 @@ public class accessingMySql {
 		return userService.deleteTreatment(treatment_id);
 	}
 	
+//	To get treatment by user id
 	@GetMapping("/treatmentlist/{userid}")
 	public List<Treatment> treatmentList(@PathVariable("userid") Integer user_id_fk){
 		return userService.treatmentList(user_id_fk);
 	}
 	
+//	To get patientMedication by user id
+	@GetMapping("/medication/{userid}")
+	public MainResponseData patientmedication(@PathVariable("userid") Integer treatment_id_fk){
+		return userService.getMedication(treatment_id_fk);
+	}
+	
+//	To update password
+	@PutMapping("/changepass")
+	public String updatePassword(@RequestBody UserDto userDto) {
+		return userService.changePassword(userDto);
+	}
 }
 
 

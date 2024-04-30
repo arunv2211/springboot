@@ -2,15 +2,24 @@ package com.example.demo.controller.Response;
 
 public class MainResponseData {
 
-	private String statusMessage;
+	private boolean success;
+	private String message;
 	private Integer statusCode;
 	private dataResponse data;
 	
-	public String getStatusMessage() {
-		return statusMessage;
+	
+	public boolean isSuccess() {
+		return success;
 	}
-	public void setStatusMessage(String statusMessage) {
-		this.statusMessage = statusMessage;
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	public Integer getStatusCode() {
 		return statusCode;

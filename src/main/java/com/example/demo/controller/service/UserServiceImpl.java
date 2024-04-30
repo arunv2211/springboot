@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.demo.controller.Response.MainResponseData;
 import com.example.demo.controller.Response.dataResponse;
 import com.example.demo.controller.dto.AddressDto;
+import com.example.demo.controller.dto.PasswordDto;
 import com.example.demo.controller.dto.PatientMedicationDosageDto;
 import com.example.demo.controller.dto.PatientMedicationDto;
 import com.example.demo.controller.dto.TreatmentDto;
@@ -14,6 +15,7 @@ import com.example.demo.controller.dto.UserAddressDto;
 import com.example.demo.controller.dto.UserDto;
 import com.example.demo.controller.repository.AddressRepository;
 import com.example.demo.controller.repository.PatientMedicationDosageRepo;
+import com.example.demo.controller.repository.PatientMedicationRepo;
 import com.example.demo.controller.repository.TreatmentRepo;
 import com.example.demo.controller.repository.UserRepository;
 
@@ -31,6 +33,10 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
+	
+	MainResponseData mainResponse = new MainResponseData();
+	dataResponse response = new dataResponse();
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -42,6 +48,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private PatientMedicationDosageRepo patientDosageRepo;
+	
+	@Autowired
+	private PatientMedicationRepo medicationRepo;
 
 	@Transactional
 	@Override
@@ -50,7 +59,6 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteById(id);
 		return "Success";
 	}
-	
 	@Transactional
 	@Override
 	public UserAddressDto getUserDetail(Integer id) {
@@ -94,7 +102,7 @@ public class UserServiceImpl implements UserService {
 		dataResponse childRes = new dataResponse();
 		childRes.setMessage("Data get succussfully");
 		childRes.setData(userRepository.findAll());
-		res.setStatusMessage("succuss");
+		res.setMessage("succuss");
 		res.setStatusCode(200);
 		res.setData(childRes);
 		return res;
@@ -128,7 +136,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Transactional
 	@Override
-	public boolean checkUser(String username, String password) {
+	public MainResponseData checkUser(String username, String password) {
+		
 		boolean result = true;
 		
 		User userData = userRepository.findByUserName(username, password);
@@ -139,9 +148,13 @@ public class UserServiceImpl implements UserService {
 			result = true;	
 		}
 		
-		return result;
-
-		
+		response.setMessage("Data get sucessfully");
+		response.setData(userData);
+		mainResponse.setSuccess(result);
+		mainResponse.setMessage("success");
+		mainResponse.setStatusCode(200);
+		mainResponse.setData(response);
+		return mainResponse;
 	}
 
 
@@ -210,7 +223,41 @@ public class UserServiceImpl implements UserService {
 		List<Treatment> treatmentObject = treatmentRepo.getTreatmentList(user_id_fk);
 		return treatmentObject;
 	}
+	
+	@Transactional
+	@Override
+	public MainResponseData getMedication(Integer treatment_id_fk) {
+		List<patientMedication> medicationObject = medicationRepo.getMedicationList(treatment_id_fk);
+		if(medicationObject == null) {
+			response.setMessage("Failed");
+			response.setData(medicationObject);
+			mainResponse.setSuccess(false);
+			mainResponse.setMessage("Failed");
+			mainResponse.setStatusCode(500);
+			mainResponse.setData(response);
+		}
+		else {
+			response.setMessage("Data get sucessfully");
+			response.setData(medicationObject);
+			mainResponse.setSuccess(true);
+			mainResponse.setMessage("success");
+			mainResponse.setStatusCode(200);
+			mainResponse.setData(response);
+		}
+		
+		return mainResponse;
+	}
+	
+	@Transactional
+	@Override
+	public String changePassword(UserDto userDto) {
+		Optional<User> optionalUser = userRepository.findById(userDto.getUserId());
+		User user = optionalUser.get();
+		user.setPassword(userDto.getPassword());
+		return "success";
+	}
 
+	
 
 	
 
